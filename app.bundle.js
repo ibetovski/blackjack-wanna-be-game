@@ -23,8 +23,6 @@ var Dom = {
     // find its container by index.
     var $container = $(storage.$container.find('.card')[index]);
 
-    console.log($container);
-
     var $img = $('<img src="./img/' + content + '.png" alt="' + content + '" data-index="' + index + '"/>');
 
     var left = Dom.getDeckPosition().left - $container.offset().left;
@@ -140,11 +138,17 @@ var Game = {
   },
 
   getFreshHand: function() {
+    if (Game.isEventInProgress) {
+      return;
+    }
+
+    Game.isEventInProgress = true;
     playerCards.refresh();
     Dom.cleanPlayerCards();
 
     setTimeout(function() {
       Dom.createCard(0, Game.playerCards);
+      Game.isEventInProgress = false;
     }, 2000);
   },
 
