@@ -69,21 +69,19 @@ body {
 
 /* cards removing animation */
 .card.remove-add {
-  position: relative;
 }
 
 .card.remove-add img {
   -webkit-transition: all 5s;
-  transition: all 5s;
+  transition: all 2s;
   position: absolute;
-  top: 0;
+  top: 100px !important;
   left: 0;
 }
 
 .card.remove-add-active img {
-  top: -500px;
-  left: -4999px;
-  width: 500px;
+  top: -1999px !important;
+  left: 0px !important;
 }
 
 /**
@@ -108,4 +106,20 @@ body {
   background-size: contain;
   width: 100%;
   height: 100%;
+}
+
+
+.hit-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  line-height: 100px;
+  font-size: 30px;
+  margin-left: -100px;
+  margin-top: -50px;
+
+  border: 0;
+  background: #A30614;
+  color: white;
 }

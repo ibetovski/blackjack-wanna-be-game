@@ -12,13 +12,13 @@ var Dom = {
   },
 
   createSlots: function(index, storage) {
-    var content = storage.cards[index].getContent().combinedString;
+    var content = storage.getCards()[index].getContent().combinedString;
     var $element = $('<div class="card" data-index="' + index + '"></div>');
     storage.$container.append($element);
   },
 
   createCard: function(index, storage) {
-    var content = storage.cards[index].getContent().combinedString;    
+    var content = storage.getCards()[index].getContent().combinedString;    
     // find its container by index.
     var $container = $(storage.$container.find('.card')[index]);
 
@@ -38,7 +38,7 @@ var Dom = {
       $img.addClass('in-placeholder-position');
     }, 100);
 
-    if (++index < storage.cards.length) {
+    if (++index < storage.getCards().length) {
       setTimeout(function() {
         Dom.createCard(index, storage);
       }, 1000);
@@ -68,11 +68,11 @@ var Dom = {
   },
 
   drawTable: function() {
-    Game.dealerCards.cards.forEach(function(value, index) {
+    Game.dealerCards.getCards().forEach(function(value, index) {
       Dom.createSlots(index, Game.dealerCards);
     });
 
-    Game.playerCards.cards.forEach(function(value, index) {
+    Game.playerCards.getCards().forEach(function(value, index) {
       Dom.createSlots(index, Game.playerCards);
     });
   },
@@ -95,14 +95,14 @@ var Dom = {
 
       setTimeout(function() {
         $card.find('img').remove();
-        
+
         $card
           .removeClass('remove-add')
           .removeClass('remove-add-active');        
 
       }, 1000);
 
-    }, 100);
+    }, 300);
   },
 
   cleanPlayerCards: function() {
@@ -116,18 +116,26 @@ var Dom = {
       Dom.removeCard($(this));
       playerCards.pick($(this).data('index'));
     });
+
+    $('.hit-button').click(function() {
+      Game.getFreshHand();
+    });
   }
 }
 
 var Game = {
   playerCards: {
     $container: $('.player-cards'),
-    cards: playerCards.get()
+    getCards: function() {
+      return playerCards.get();
+    }
   },
 
   dealerCards: {
     $container: $('.dealer-cards'),
-    cards: dealerCards.get()
+    getCards: function() {
+      return dealerCards.get();
+    }
   },
 
   getFreshHand: function() {
@@ -145,7 +153,5 @@ var Game = {
     Dom.initListeners();
   }
 };
-
-window.refresh = Game.getFreshHand;
 
 Game.init();
