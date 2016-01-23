@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 body {
   margin: 0;
   padding: 0;
@@ -5,6 +7,11 @@ body {
   height: 100%;
   position: absolute;
   background: #1B411F;
+  font-family: 'Open sans', sans-serif;
+}
+
+h1 {
+  color: white;
 }
 
 .game {
@@ -34,19 +41,27 @@ body {
   margin-left: -115px;
 }
 
+.player-cards img:hover {
+  margin-left: -2px;
+  width: 102px;
+  cursor: pointer;
+}
+
 /**
  * ======================================
- * DEALED CARD
+ * DEALED CARDS
  * ======================================
  */
 .card {
-  border: 1px dashed #aaa;
+  border: 1px dashed #241F20;
   width: 100px;
-  height: 150px;
+  height: 145px;
   float: left;
   padding: 5px;
   margin-left: 20px;
   position: relative;
+  background: url('./img/card-slot-bg.png') center center no-repeat;
+  background-size: contain;
 }
 
 .card:first-child {
@@ -56,15 +71,15 @@ body {
 .card img {
   position: absolute;
   width: 100px;
-  transition: all 1s;
-  top: 0;
-  left: 0;
+  transition: left 1s, top 1s, width 100ms;
+  top: 10px;
+  left: 10px;
   z-index: 2;
 }
 
 .card img.in-placeholder-position {
-  top: 0 !important;
-  left: 0 !important;
+  top: 5px !important;
+  left: 5px !important;
 }
 
 /* cards removing animation */
@@ -111,15 +126,21 @@ body {
 
 .hit-button {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200px;
-  line-height: 100px;
+  bottom: 10%;
+  right: -120px;
+
+  width: 100px;
+  line-height: 50px;
   font-size: 30px;
-  margin-left: -100px;
-  margin-top: -50px;
 
   border: 0;
   background: #A30614;
   color: white;
+
+  cursor: pointer;
+}
+
+.hit-button:hover {
+  transition: background 100ms;
+  background: #900E0E;
 }
