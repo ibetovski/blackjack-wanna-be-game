@@ -1,5 +1,7 @@
 # blackjack-wanna-be-game
 
+![](https://github.com/ibetovski/blackjack-wanna-be-game/blob/master/img/screen-shot.png?raw=true)
+
 Proof of concep for a poker/blackjack game.
 
 Tasks:
